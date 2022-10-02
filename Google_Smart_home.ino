@@ -1,11 +1,11 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 #include <Servo.h>
-char *ssid = "surya";
-char *pass = "warmachine076";
+char *ssid = "Your SSID name";
+char *pass = "Pass.";
 char *broker = "io.adafruit.com";
-char *username = "The_maheep";
-char *keypass  = "aio_sssi39OIBCzSOMCzyVxVdNVkJUnR";
+char *username = "username";
+char *keypass  = "your key";
 char msg[10];
 char loff[] = {"OFF1"};
 char moff[] = {"OFF2"};
@@ -47,9 +47,9 @@ void loop() {
     if (client.connect("mqtt", username, keypass))
     {
       Serial.println("Connected to Server");
-      client.subscribe("The_maheep/feeds/lighe1");
-      client.subscribe("The_maheep/feeds/motor");
-      client.subscribe("The_maheep/feeds/servo");
+      client.subscribe("Feed name");
+      client.subscribe("Feed name");
+      client.subscribe("Feed name");
     }
   }
  if ((millis()-timee) >=3000)
@@ -60,17 +60,17 @@ void loop() {
   if (gasvalue < 500)
   {
     digitalWrite(buzz,0);
-    client.publish("The_maheep/feeds/gass-monitor", "NO gass Leakage");
+    client.publish("Feed name");
   }
   else if ((gasvalue > 600) && (gasvalue < 800))
   {
     analogWrite(buzz,150);
-    client.publish("The_maheep/feeds/gass-monitor", "Low Leakage");
+    client.publish("Feed name");
   }
   else if (gasvalue > 800)
   {
     analogWrite(buzz,200);
-    client.publish("The_maheep/feeds/gass-monitor", "High leakage");
+    client.publish("Feed name");
   }
    timee=millis();
   }
